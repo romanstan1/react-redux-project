@@ -13,9 +13,15 @@ li {
   list-style: none;
 }
 
+html {
+}
+
 body {
   text-align: center;
   font-family: sans-serif;
+  min-height: 100%;
+  width: 100%;
+  position: absolute;
 }
 
 header {
@@ -40,7 +46,7 @@ input {
 }
 
 footer {
-  position: relative;
+  position: absolute;
   bottom: 0;
   width: 100%;
   background: black;
@@ -74,7 +80,9 @@ nav {
     }
   }
 }
-
+div.wrap {
+  margin-bottom: 50px;
+}
 
 div.item {
   border: 4px solid ghostwhite;
@@ -85,12 +93,29 @@ div.item {
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 100%;
+    height: 80%;
     &:hover {
       background: grey;
     }
     div {
       align-self:center;
     }
+  }
+  button{
+
+    outline: none;
+    height: calc(18% - 4px);
+    cursor: pointer;
+    margin-top: 2%;
+    border-top: 4px solid black;
+    width: 100%;
+    background: white;
+      &:hover {
+        background: grey;
+      }
+  }
+  input {
+    outline: none;
+    line-height: 30px;
   }
 }

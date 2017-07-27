@@ -1,4 +1,5 @@
 import {EventEmitter} from 'events';
+import dispatcher from '../dispatcher.js';
 
 class ItemStore extends EventEmitter {
   constructor() {
@@ -47,13 +48,38 @@ class ItemStore extends EventEmitter {
     this.emit('change');
   }
 
+  deleteItem(name){
+
+    const itemNo = this.items.findIndex((item, index)=>{
+      // console.log(item.name, index, name);
+      return item.name === name;
+    });
+    if(itemNo >=0) this.items.splice(itemNo, 1);
+    this.emit('change');
+  }
+
   getItems(){
     return this.items;
+  }
+
+  handleActions(action) {
+    switch (action.type) {
+      case 'CREATE_ITEM': {
+        this.createItem(action.text);
+      }
+      case 'DELETE_ITEM': {
+        this.deleteItem(action.name);
+      }
+    }
+
+
+
   }
 
 
 };
 
 const itemstore = new ItemStore();
-window.itemstore = itemstore;
+dispatcher.register(itemstore.handleActions.bind(itemstore));
+
 export default itemstore;

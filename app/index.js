@@ -14,7 +14,7 @@ import Footer from './components/Footer';
 
 ReactDOM.render(
   <Router>
-    <div>
+    <div className="wrap">
     <Nav />
      <Switch>
       <Route exact path="/" component={HomeIndex} />
